@@ -14,4 +14,4 @@ let headerTitle= document.getElementById('main-header');
 headerTitle.style.borderBottom= 'solid 3px #000';
 let add_item = document.getElementById('add');
 add_item.style.color='green';
-add_item.innerHTML='<b>Add Items</b>'
+add_item.style.fontWeight='bold';
