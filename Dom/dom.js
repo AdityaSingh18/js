@@ -15,3 +15,10 @@ headerTitle.style.borderBottom= 'solid 3px #000';
 let add_item = document.getElementById('add');
 add_item.style.color='green';
 add_item.style.fontWeight='bold';
+let items = document.getElementsByClassName('list-group-item');
+items[1].textContent='hello 2';
+items[2].textContent='hello 3';
+for(let i=0;i<items.length;i++){
+    items[i].style.background='green';
+    items[i].style.fontWeight='bold';
+}
