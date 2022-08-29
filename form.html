@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+    body { 
+    
+        text-align: center;
+       background-color: rgb(255, 144, 80);
+       background-image: url('https://i0.wp.com/myfreeslides.com/wp-content/uploads/2020/02/orange-yellow-Gradient-Background.jpg?ssl=1');
+    
+    
+    }
+    input {
+  width: 50%;
+  
+}
+    
+</style>
+</head>
+<title>
+
+</title>
+<body>
+   
+    <h1>Book A call</h1>
+    <h2>Book a call and our representative will call you within the selected time.</h2>
+
+
+    <form action="#" onsubmit="reguser()">
+
+<label>First Name </label> <br>
+<input type="text" id="fname"> <br> <br>
+
+
+<label>Last Name</label><br>
+<input type="text" id="lname"> <br><br>
+
+
+<label>Phone Number</label><br>
+<input type="text" id="ph"><br><br>
+
+
+<label>Time for Call</label><br>
+<input type="date"id="date"> <input type="time"id="time"><br><br>
+
+<input type="submit" value="Get A Call" required style="background-color: #c1ce0b;;">
+
+    </form>
+
+    <script>
+        function reguser(){
+           const name = document.getElementById('fname').value;
+           const lname = document.getElementById('lname').value;
+           const phone = document.getElementById('ph').value;
+           const date= document.getElementById('date').value;
+           const time= document.getElementById('time').value;
+           console.log(name);
+           console.log(lname);
+           console.log(phone);
+           console.log(date);
+           console.log(time);
+
+        }
+    </script>
+</body>
+</html>
