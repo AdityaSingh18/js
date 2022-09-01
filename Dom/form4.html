@@ -26,40 +26,37 @@
     <h2>Book a call and our representative will call you within the selected time.</h2>
 
 
-    <form action="#" onsubmit='savetolocal(event)'>
+    <form onsubmit='savetolocal(event)'>
 
 <label>First Name </label> <br>
-<input type="text" id="fname"> <br> <br>
+<input type="text" name="firstname"> <br> <br>
 
 
 <label>Last Name</label><br>
-<input type="text" id="lname"> <br><br>
+<input type="text" name="lastname"> <br><br>
 
 
 <label>Phone Number</label><br>
-<input type="text" id="ph"><br><br>
+<input type="text" name="phone"><br><br>
 
 
-<label>Time for Call</label><br>
-<input type="date"id="date"> <input type="time"id="time"><br><br>
-
-<input type="submit" value="Get A Call" required style="background-color: #c1ce0b;;">
+<button>Get A Call</button>
 
     </form>
 
  <script>
         function savetolocal(event){
             event.preventDefault();
-           const name = document.getElementById('fname');
-           const lname = document.getElementById('lname').value;
-           const phone = document.getElementById('ph').value;
-           const date= document.getElementById('date').value;
-           const time= document.getElementById('time').value;
+            
+            const firstname = event.target.firstname.value;
+            const lname = event.target.lastname.value;
+           const phone = event.target.phone.value;
+        
            
-           localStorage.setItem('name',name);
+           localStorage.setItem('name',firstname);
            localStorage.setItem('last name',lname);
            localStorage.setItem('Phone No',phone);
-           localStorage.setItem('date',date);
+           //localStorage.setItem('date',date);
 
         }
     </script>
