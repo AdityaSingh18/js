@@ -59,6 +59,8 @@
 
            let myob_serialized =JSON.stringify(myobj);
            console.log(myob_serialized);
+
+           localStorage.setItem("details",myob_serialized);
            
            let myob_deserial = JSON.parse(localStorage.getItem("myob_serialized"))
 console.log(myob_serialized);
