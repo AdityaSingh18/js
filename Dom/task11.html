@@ -41,9 +41,8 @@
 
 
 <button>Get A Call</button>
-
-    </form>
-
+<ul id='listOfUsers'></ul>
+    </form >
  <script>
         function savetolocal(event){
             event.preventDefault();
@@ -60,11 +59,20 @@
            let myob_serialized =JSON.stringify(myobj);
            console.log(myob_serialized);
 
-           localStorage.setItem("details",myob_serialized);
+           localStorage.setItem(event.target.firstname.value,myob_serialized);
            
            let myob_deserial = JSON.parse(localStorage.getItem("myob_serialized"))
-console.log(myob_serialized);
+           console.log(myob_serialized);
+           ShowNewUsers(myobj);
+
         }
+
+     function ShowNewUsers(user){
+        let parentNode = document.getElementById('listOfUsers');
+        let childHTML = `<li> ${user.name}-${user.phone}</li>`;
+        parentNode.innerHTML= parentNode.innerHTML+childHTML;
+     }
+        
     </script>
 </body>
 </html>
