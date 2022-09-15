@@ -1,0 +1,52 @@
+class Solution {
+  longestPalin(S){
+    //code here
+    let len = S.length;
+    let maxLen = 0, start = 0;
+    
+    for(let i=0;i<len;i++)
+    {
+        // odd palindrome
+        
+        let l=i,h=i;
+        
+        while(l>=0 && h<len && S[l]===S[h])
+        {
+            l--;
+            h++;
+        }
+        
+        if(h-l-1>maxLen)
+        {
+            maxLen = h-l-1;
+            start = l+1
+        }
+        
+        // even palindrome
+        
+        l=i;
+        h=i+1;
+        
+        while(l>=0 && h<len && S[l]===S[h])
+        {
+            l--;
+            h++;
+        }
+        
+        if(h-l-1>maxLen)
+        {
+            maxLen = h-l-1;
+            start = l+1
+        }
+    }
+    
+    let str = "";
+    
+    for(let i=start;i<start+maxLen;i++)
+    {
+        str = str+S[i];
+    }
+    
+    return str;
+  }
+}
