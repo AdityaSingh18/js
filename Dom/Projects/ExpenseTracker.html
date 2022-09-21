@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <style> 
+        body { 
+        
+            text-align: center;
+           background-color: rgb(255, 144, 80);
+           background-image: url('https://i0.wp.com/myfreeslides.com/wp-content/uploads/2020/02/orange-yellow-Gradient-Background.jpg?ssl=1');
+        
+        
+        }
+        input {
+      width: 50%;
+      
+    }
+        
+    </style>
+    </head>
+<title>
+
+</title>
+<body>
+   
+    <h1>Expense Calculator</h1>
+    <h2>Check your Monthly Expense</h2>
+
+
+    <form onsubmit='savetolocal(event)'>
+
+<label>Choose Expense Amount</label> <br>
+<input id='amount' type="text" name="amountall"> <br> <br>
+
+
+<label>Choose Description</label><br>
+<input id="desc" type="text" name="desc"> <br><br>
+
+
+<label>Choose a category</label><br>
+
+<select name="category" id="category">
+    <option value="Fuel">Fuel</option>
+    <option value="Food">Food</option>
+    <option value="Electricity">Electricity</option>
+    <option value="Movie">Movie</option>
+  </select>
+  <br><br>
+
+
+<button>Add Expense</button>
+<ul id='expenses'></ul>
+    </form >
+ <script>
+        function savetolocal(event){
+            event.preventDefault();
+            myobj={
+                name: event.target.amountall.value,
+               desc: event.target.desc.value,
+               category: event.target.category.value
+            };
+        
+           
+           localStorage.setItem("myobj",myobj);
+          
+
+           let myob_serialized =JSON.stringify(myobj);
+           console.log(myob_serialized);
+
+           localStorage.setItem(event.target.category.value,myob_serialized);
+           
+           let myob_deserial = JSON.parse(localStorage.getItem("myob_serialized"))
+           console.log(myob_serialized);
+           ShowNewUsers(myobj);
+
+         
+
+        }
+
+     function ShowNewUsers(user){
+        document.getElementById('category').value=category='';
+        document.getElementById('amount').value=name='';
+        document.getElementById('desc').value=desc='';
+        let parentNode = document.getElementById('expenses');
+        let childHTML = `<li id=${user.category}> ${user.name}-${user.category}
+            <button onclick=deleteUser('${user.category}')> Delete </button>
+            <button onclick=editUserDetails('${user.category}','${user.name}','${user.desc}')>Edit User</button>
+            </li>`;
+        parentNode.innerHTML= parentNode.innerHTML+childHTML; 
+        
+     }
+function deleteUser(category){
+
+    console.log(category);
+localStorage.removeItem(category);
+removeUserFromScreen(category);
+
+}
+
+function removeUserFromScreen(category){
+    let parentNode = document.getElementById('expenses');
+    let childNodeTobeDeleted = document.getElementById(category);
+    parentNode.removeChild(childNodeTobeDeleted);
+}
+
+function editUserDetails(category,name,desc){
+document.getElementById('category').value=category;
+document.getElementById('amount').value=name;
+document.getElementById('desc').value=desc;
+deleteUser(category);
+}
+        
+    </script>
+</body>
+</html>
