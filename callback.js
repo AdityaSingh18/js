@@ -12,7 +12,7 @@ function getPost(){
         
 let output = '';
 for(let i=0;i<posts.length;i++){
-    output= output+`<li>${posts[i].title} - last updated ${(new Date().getTime()-posts[i].createAt)/1000}</li>`
+    output+=`<li>${posts[i].title} - last updated ${(new Date().getTime()-posts[i].createAt)/1000}</li>`
 
     } 
     console.log('timer running id=',intervalId);  
