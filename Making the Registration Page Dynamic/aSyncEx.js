@@ -23,6 +23,8 @@ function gotomanali(){
     })
 }
 
+//above is same just like in promises
+
 async function fun1(){
     try{
 const msg = await buyCar();
