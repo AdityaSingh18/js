@@ -91,7 +91,7 @@ var smallerNumbersThanCurrent = function(nums) {
 
 
 //reverse an array
-
+/*
 
 let arr= [1,2,3,4];
 
@@ -104,3 +104,25 @@ arr[j]=temp;
     }
 }
 console.log(arr);
+*/
+let arr = [[0, 1, 1, 1],
+           [0, 0, 1, 1],
+           [1, 1, 1, 1],
+           [0, 0, 0, 0]
+        ]
+let n=3;
+let m=3;
+        let max =0;
+        for(let i =0;i<n;i++){
+            let rowmax= 0;
+            for(let j=0;j<m;j++){
+                if(arr[i][j]==1){
+                    rowmax++;
+                }
+                
+                if(rowmax>max){
+                    max=rowmax;
+                }
+            }
+        }
+       
