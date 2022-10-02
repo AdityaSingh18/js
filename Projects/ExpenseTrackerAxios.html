@@ -48,6 +48,18 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script>
+    window.addEventListener("DOMContentLoaded",()=>{
+  axios.get('https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/Appointment')
+  .then((Response)=>{
+    console.log(Response)
+
+    for(var i=0;i<Response.data.length;i++){
+        ShowExpenses(Response.data[i])
+    }
+  })
+
+
+})
 
 function savetolocal(event){
   event.preventDefault();
@@ -64,7 +76,7 @@ let serilized_Obj = JSON.stringify(myobj);
 
 axios.post("https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/Appointment",myobj)
 .then((Response)=>{
-
+console.log(Response)
 })
 .catch((err)=>{
     console.log(err)
@@ -72,7 +84,6 @@ axios.post("https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/Appointmen
 //localStorage.setItem(event.target.item.value,serilized_Obj);
 
 
-ShowExpenses(myobj);
 
 }
 
