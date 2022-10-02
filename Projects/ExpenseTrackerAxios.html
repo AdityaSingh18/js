@@ -48,7 +48,7 @@
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script>
-    window.addEventListener("DOMContentLoaded",()=>{
+window.addEventListener("DOMContentLoaded",()=>{
   axios.get('https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/Appointment')
   .then((Response)=>{
     console.log(Response)
@@ -89,24 +89,33 @@ console.log(Response)
 
 function ShowExpenses(user){
  let parentNode = document.getElementById('belowexpenses');
- let childHTML = `<li id=${user.amount}> ${user.amount}-${user.description}-${user.category}
-  <button onclick=deleteUser('${user.amount}')> Delete </button>
-  <button onclick=editUserDetails('${user.amount}','${user.description},','${user.category}')>Edit users</button>
+ let childHTML = `<li id=${user._id}> ${user.amount}-${user.description}-${user.category}
+  <button onclick=deleteUser('${user._id}')> Delete </button>
+  <button onclick=editUserDetails('${user._id}','${user.description},','${user.category}')>Edit users</button>
 </li>`;
 
 
 parentNode.innerHTML= parentNode.innerHTML+childHTML;
   }
 
-  function deleteUser(amount){
-    console.log(amount);
+  function deleteUser(userId){
+
+    axios.delete(`https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/${userId}`)
+    .then(()=>{
+        removeExpenseFromScreen(userId)
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+    /*console.log(amount);
     localStorage.removeItem(amount);
    removeExpenseFromScreen(amount);
+   */
   }
 
-  function removeExpenseFromScreen(amount){
+  function removeExpenseFromScreen(userId){
     let parentNode = document.getElementById('belowexpenses');
-    let childNodeTobeDeleted = document.getElementById(amount);
+    let childNodeTobeDeleted = document.getElementById(userId);
     console.log(childNodeTobeDeleted);
    parentNode.removeChild(childNodeTobeDeleted);
   }

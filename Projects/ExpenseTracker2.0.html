@@ -46,6 +46,8 @@
    </div>
   </div>
   <script>
+
+
 function savetolocal(event){
   event.preventDefault();
   myobj={
@@ -64,6 +66,17 @@ ShowExpenses(myobj);
 
 }
 
+window.addEventListener("DOMContentLoaded",()=>{
+  const localStorageObj = localStorage;
+  const localStoragekeys = Object.keys(localStorageObj)
+
+  for(var i=0;i<localStoragekeys.length;i++){
+    const key = localStoragekeys[i]
+    const userDetailsString = localStorageObj[key];
+    const userDetailsObj = JSON.parse(userDetailsString);
+    ShowExpenses(userDetailsObj);
+  }
+})
 function ShowExpenses(user){
  let parentNode = document.getElementById('belowexpenses');
  let childHTML = `<li id=${user.amount}> ${user.amount}-${user.description}-${user.category}
