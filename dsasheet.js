@@ -105,6 +105,29 @@ arr[j]=temp;
 }
 console.log(arr);
 */
+//conatins duplicate
+
+/*
+var containsDuplicate = function(nums) {
+    for(let i =0;i<nums.length;i++){
+        for(let j=i+1;j<nums.length;j++){
+         if(nums[i]==nums[j]){
+             return true;
+         }
+            
+        }
+    }
+ return false;
+};
+*/
+
+
+
+
+
+
+/*
+
 let arr = [[0, 1, 1, 1],
            [0, 0, 1, 1],
            [1, 1, 1, 1],
@@ -126,3 +149,20 @@ let m=3;
             }
         }
        
+*/
+let num = [1,2,0,0];
+let  k = 34;
+let ans;
+    for(let i=0;i<num.length-1;i++){
+        ans =(num[i]*10)+num[i+1]+ans;
+    }
+   ans = ans+k;
+    
+    let arr=[];
+for(let i=num.length-1;i>=0;i--){
+    let div= ans%10;
+    arr[i]=div;
+    div = div/10;
+    
+}
+    console.log(arr);
