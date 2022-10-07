@@ -49,7 +49,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script>
 window.addEventListener("DOMContentLoaded",()=>{
-  axios.get('https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/Appointment')
+  axios.get('https://crudcrud.com/api/4f2c0bb56a474b73818ba84d0f1f6076/Appointment')
   .then((Response)=>{
     console.log(Response)
 
@@ -74,7 +74,7 @@ category: event.target.category.value
 
 let serilized_Obj = JSON.stringify(myobj);
 
-axios.post("https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/Appointment",myobj)
+axios.post("https://crudcrud.com/api/4f2c0bb56a474b73818ba84d0f1f6076/Appointment",myobj)
 .then((Response)=>{
 console.log(Response)
 })
@@ -91,7 +91,7 @@ function ShowExpenses(user){
  let parentNode = document.getElementById('belowexpenses');
  let childHTML = `<li id=${user._id}> ${user.amount}-${user.description}-${user.category}
   <button onclick=deleteUser('${user._id}')> Delete </button>
-  <button onclick=editUserDetails('${user._id}','${user.description},','${user.category}')>Edit users</button>
+  <button onclick=editUserDetails('${user.amount}','${user.description},','${user.category}','${user._id}')>Edit users</button>
 </li>`;
 
 
@@ -100,7 +100,7 @@ parentNode.innerHTML= parentNode.innerHTML+childHTML;
 
   function deleteUser(userId){
 
-    axios.delete(`https://crudcrud.com/api/2564e3b97ca04f9598947c6e023b0e64/Appointment/${userId}`)
+    axios.delete(`https://crudcrud.com/api/4f2c0bb56a474b73818ba84d0f1f6076/Appointment/${userId}`)
     .then(()=>{
         removeExpenseFromScreen(userId)
     })
@@ -122,12 +122,12 @@ parentNode.innerHTML= parentNode.innerHTML+childHTML;
 
 
   
-function editUserDetails(amount,description,category){
+function editUserDetails(amount,description,category,userId){
   //console.log(document.getElementById('item').value);
   document.getElementById('item').value=amount;
   document.getElementById('descip').value=description;
   document.getElementById('category').value=category;
-  deleteUser(amount);
+  deleteUser(userId);
 }
 
   </script>

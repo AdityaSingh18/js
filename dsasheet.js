@@ -150,6 +150,7 @@ let m=3;
         }
        
 */
+/*
 let num = [1,2,0,0];
 let  k = 34;
 let ans;
@@ -166,3 +167,41 @@ for(let i=num.length-1;i>=0;i--){
     
 }
     console.log(arr);
+
+
+    Find the Duplicate Number
+
+    var findDuplicate = function(nums) {
+        for(let i =0;i<nums.length;i++){
+            for(let j=i+1;j<nums.length;j++){
+    if(nums[i]==nums[j]){
+            
+            return nums[i];
+        }
+    }
+    }
+    };
+    */
+
+    let nums1 = [1,2,3,0,0,0]
+    let  m = 3
+    let  nums2 = [2,5,6]
+    let n = 3
+
+    //op=  [1,2,2,3,5,6]
+let counter=0;
+for(let i =m;i<nums1.length;i++){
+    nums1[i]=nums2[counter];
+    counter++;
+}
+
+for(let i=0;i<nums1.length;i++){
+    for(let j=0;j<nums1.length-1-i;j++){
+        if(nums1[j]>nums1[j+1]){
+        let temp = nums1[j];
+        nums1[j]=nums1[j+1];
+        nums1[j+1]=temp;
+        }
+    }
+}
+console.log(nums1)
