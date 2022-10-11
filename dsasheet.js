@@ -1,4 +1,7 @@
+
+
 //Q.1 https://leetcode.com/problems/concatenation-of-array/
+
 /*
 var getConcatenation = function(nums) {
     let ans=[];
@@ -182,6 +185,7 @@ for(let i=num.length-1;i>=0;i--){
     }
     };
     */
+   /*
 
     let nums1 = [1,2,3,0,0,0]
     let  m = 3
@@ -205,3 +209,152 @@ for(let i=0;i<nums1.length;i++){
     }
 }
 console.log(nums1)
+*/
+//Transpose Matrix
+/*
+let arr1 = [[1,2,3],[4,5,6],[7,8,9]];
+for(let i=0;i<arr1.length;i++){
+    for(let j=0;j<arr1[i].length;j++){
+        console.log(arr1[j][i])
+    }
+}
+*/
+/*
+let matrix1 = [[1,2,3],[4,5,6],[7,8,9]];
+let arr3=[[],[],[]];
+for(let i=0;i<matrix1.length;i++){
+    for(let j=0;j<matrix1[i].length;j++){
+        arr3[i][j]=matrix1[j][i]
+    }
+}
+     console.log(arr3)
+
+     */
+/*
+    let arr5=  [-2,1,-3,4,-1,2,1,-5,4];
+    for(let i=0;i<arr5.length;i++){
+        for(j=0;j<arr5.length;j++){
+            console.log(arr5[j])
+        }
+    }'*/
+/*
+    let arr6=  [-2,1,-3,4,-1,2,1,-5,4]
+let max= 0;
+
+    for(let i=0;i<arr6.length;i++){
+        let loopmax=0;
+        for(j=i;j<arr6.length;j++){
+        
+            loopmax=arr6[j]+loopmax;
+        }
+        if(loopmax>max){
+        max= loopmax;
+            
+        }
+        }
+        console.log(max)
+        */
+/*
+       let root = [1,null,2,3]
+
+        var preorderTraversal = function(root) {
+            if(!root) return [];
+         
+            const stack=[root];
+             const result=[];
+         
+            while(stack.length){
+             let node=stack.pop();
+         
+             result.push(node.val);
+         
+              if(node.right){
+         
+               stack.push(node.right)
+         
+             }
+         
+             if(node.left){
+         
+               stack.push(node.left)
+         
+             }
+         
+           }
+         
+           console.log(result)
+         
+         };
+         
+         preorderTraversal([1,null,2,3])
+*/
+//Maximum Subarray
+/*
+let max = nums[0];
+    let cur = 0;
+    
+    for(let i = 0; i < nums.length; i++) {
+        cur += nums[i];
+        
+        if(cur > max) max = cur
+        if(cur < 0) cur = 0
+    }
+    
+    return max;
+    */
+/*
+    //Chocolate Distribution Problem-binary
+
+    class Solution{
+        findMinDiff(arr,n,m){
+            let val= 10000;
+            
+           arr.sort((a,b)=>{
+               return a-b
+           })
+           
+           for(let i=0;i<=n-m;i++){
+               let minval= arr[i];
+               let maxval = arr[i+m-1];
+               let diff= maxval-minval;
+               
+               if(diff<val){
+                   val=diff
+               }
+           }
+           
+           return val;
+        }
+    }
+    
+    }
+
+*/
+/*
+let arr=[17 ,83, 59 ,25 ,38 ,63 ,25 ,1 ,37]
+let n=9;
+let m=9;
+function minDiff(arr,n,m){
+        let val= 1000;
+        
+       arr.sort((a,b)=>{
+           return a-b
+       })
+       
+       for(let i=0;i<=n-m;i++){
+           let minval= arr[i];
+           let maxval = arr[i+m-1];
+           let diff= maxval-minval;
+           
+           if(diff<val){
+               val=diff
+           }
+       }
+       
+       console.log(val);
+    }
+    
+    minDiff(arr,n,m);
+   
+
+*/

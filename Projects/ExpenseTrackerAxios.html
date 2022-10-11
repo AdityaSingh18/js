@@ -49,7 +49,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script>
 window.addEventListener("DOMContentLoaded",()=>{
-  axios.get('https://crudcrud.com/api/4f2c0bb56a474b73818ba84d0f1f6076/Appointment')
+  axios.get('https://crudcrud.com/api/837eb95c764e4aac82fc977ba927ea8a/Appointment')
   .then((Response)=>{
     console.log(Response)
 
@@ -74,7 +74,7 @@ category: event.target.category.value
 
 let serilized_Obj = JSON.stringify(myobj);
 
-axios.post("https://crudcrud.com/api/4f2c0bb56a474b73818ba84d0f1f6076/Appointment",myobj)
+axios.post("https://crudcrud.com/api/837eb95c764e4aac82fc977ba927ea8a/Appointment",myobj)
 .then((Response)=>{
 console.log(Response)
 })
@@ -84,7 +84,7 @@ console.log(Response)
 //localStorage.setItem(event.target.item.value,serilized_Obj);
 
 
-
+ShowExpenses(myobj)
 }
 
 function ShowExpenses(user){
@@ -100,7 +100,7 @@ parentNode.innerHTML= parentNode.innerHTML+childHTML;
 
   function deleteUser(userId){
 
-    axios.delete(`https://crudcrud.com/api/4f2c0bb56a474b73818ba84d0f1f6076/Appointment/${userId}`)
+    axios.delete(`https://crudcrud.com/api/837eb95c764e4aac82fc977ba927ea8a/Appointment/${userId}`)
     .then(()=>{
         removeExpenseFromScreen(userId)
     })
