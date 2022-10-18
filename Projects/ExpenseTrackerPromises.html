@@ -22,7 +22,7 @@
   <div class="container">
    <div id="main" class="card card-body">
     <h2 class="title">Expense Tracker</h2>
-    <form onsubmit="savetolocal(event)" id="addForm" class="form-inline mb-3">
+    <form onsubmit="savetocloud(event)" id="addForm" class="form-inline mb-3">
       <input type="text" class="form-control mr-2" id="item">
       
       <input type="text" class="form-control mr-2" id="descip">
@@ -49,7 +49,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script>
 window.addEventListener("DOMContentLoaded",()=>{
-  axios.get('https://crudcrud.com/api/3356452b85a94836a932ebaeaeb71060/Appointment')
+
+  axios.get('https://crudcrud.com/api/c69ddcc2f6a1463fbc38728680d51ccc/Appointment')
   .then((Response)=>{
     console.log(Response)
 
@@ -58,10 +59,10 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
   })
 
-
+    
 })
 
-function savetolocal(event){
+function savetocloud(event){
   event.preventDefault();
   myobj={
 amount :event.target.item.value,
@@ -70,29 +71,30 @@ category: event.target.category.value
 
   }
 
-//saving as obj obj
+
 
 let serilized_Obj = JSON.stringify(myobj);
 
-axios.post("https://crudcrud.com/api/3356452b85a94836a932ebaeaeb71060/Appointment",myobj)
+axios.post("https://crudcrud.com/api/c69ddcc2f6a1463fbc38728680d51ccc/Appointment",myobj)
 .then((Response)=>{
 console.log(Response)
 })
 .catch((err)=>{
     console.log(err)
 })
-//localStorage.setItem(event.target.item.value,serilized_Obj);
 
-
-
+ShowExpenses(myobj)
 }
+
+
 
 function ShowExpenses(user){
  let parentNode = document.getElementById('belowexpenses');
  let childHTML = `<li id=${user._id}> ${user.amount}-${user.description}-${user.category}
   <button onclick=deleteUser('${user._id}')> Delete </button>
   <button onclick=editUserDetails('${user.amount}','${user.description},','${user.category}','${user._id}')>Edit users</button>
-</li>`;
+</li>`
+;
 
 
 parentNode.innerHTML= parentNode.innerHTML+childHTML;
@@ -100,17 +102,14 @@ parentNode.innerHTML= parentNode.innerHTML+childHTML;
 
   function deleteUser(userId){
 
-    axios.delete(`https://crudcrud.com/api/3356452b85a94836a932ebaeaeb71060/Appointment/${userId}`)
+    axios.delete(`https://crudcrud.com/api/c69ddcc2f6a1463fbc38728680d51ccc/Appointment/${userId}`)
     .then(()=>{
         removeExpenseFromScreen(userId)
     })
     .catch((err)=>{
         console.log(err);
     })
-    /*console.log(amount);
-    localStorage.removeItem(amount);
-   removeExpenseFromScreen(amount);
-   */
+
   }
 
   function removeExpenseFromScreen(userId){
@@ -127,7 +126,8 @@ function editUserDetails(amount,description,category,userId){
   document.getElementById('item').value=amount;
   document.getElementById('descip').value=description;
   document.getElementById('category').value=category;
-  deleteUser(userId);
+  
+deleteUser(userId);
 }
 
   </script>

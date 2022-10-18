@@ -49,20 +49,35 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
   <script>
 window.addEventListener("DOMContentLoaded",()=>{
-  axios.get('https://crudcrud.com/api/3356452b85a94836a932ebaeaeb71060/Appointment')
-  .then((Response)=>{
-    console.log(Response)
-
-    for(var i=0;i<Response.data.length;i++){
-        ShowExpenses(Response.data[i])
-    }
-  })
+async function gettingData(){
+try{
+  const getData = await new Promise((resolve,reject)=>{
 
 
+axios.get('https://crudcrud.com/api/ade7a0e03ac74413bfbf0f4af43ac371/Appointment')
+.then((Response)=>{
+  console.log(Response)
+
+  for(var i=0;i<Response.data.length;i++){
+      ShowExpenses(Response.data[i])
+  }
 })
 
-function savetolocal(event){
-  event.preventDefault();
+resolve("Got the data")
+
+})
+}
+catch(err){
+  console.log(err)
+}
+
+}
+gettingData()
+})
+
+async function savetolocal(event){ try{ 
+  const saving = await new Promise((resolve,reject)=>{
+    event.preventDefault();
   myobj={
 amount :event.target.item.value,
 description: event.target.descip.value,
@@ -70,21 +85,26 @@ category: event.target.category.value
 
   }
 
-//saving as obj obj
+
 
 let serilized_Obj = JSON.stringify(myobj);
 
-axios.post("https://crudcrud.com/api/3356452b85a94836a932ebaeaeb71060/Appointment",myobj)
+axios.post("https://crudcrud.com/api/ade7a0e03ac74413bfbf0f4af43ac371/Appointment",myobj)
 .then((Response)=>{
 console.log(Response)
 })
 .catch((err)=>{
     console.log(err)
 })
-//localStorage.setItem(event.target.item.value,serilized_Obj);
 
 
 
+ShowExpenses(myobj)
+  })
+}
+catch(err){
+  console.log(err)
+}
 }
 
 function ShowExpenses(user){
@@ -98,19 +118,25 @@ function ShowExpenses(user){
 parentNode.innerHTML= parentNode.innerHTML+childHTML;
   }
 
-  function deleteUser(userId){
-
-    axios.delete(`https://crudcrud.com/api/3356452b85a94836a932ebaeaeb71060/Appointment/${userId}`)
+  async function deleteUser(userId){
+try{
+    const deletingUser= await new Promise((resolve,reject)=>{
+      axios.delete(`https://crudcrud.com/api/ade7a0e03ac74413bfbf0f4af43ac371/Appointment/${userId}`)
     .then(()=>{
         removeExpenseFromScreen(userId)
     })
     .catch((err)=>{
         console.log(err);
     })
-    /*console.log(amount);
-    localStorage.removeItem(amount);
-   removeExpenseFromScreen(amount);
-   */
+
+    })
+    resolve('Deleted')
+    removeExpenseFromScreen(userId)
+
+}
+catch(err){
+  console.log(err)
+}
   }
 
   function removeExpenseFromScreen(userId){

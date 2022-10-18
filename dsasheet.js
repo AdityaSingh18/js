@@ -358,3 +358,287 @@ function minDiff(arr,n,m){
    
 
 */
+
+/*
+33. Search in Rotated Sorted Array
+
+class StackQueue{
+    constructor(){
+        this.s1 = new Stack();
+        this.s2 = new Stack();
+    }
+    
+    /**
+     * @param {number} B
+    */
+    
+    //Function to push an element in queue by using 2 stacks.
+    //push(b) {
+        // code here
+        //const s1 = this.s1;
+       // s1.push(b);
+   // }
+    
+    /**
+     * /
+    */
+   /*
+    
+    //Function to pop an element from queue by using 2 stacks.
+    pop() {
+        // code here
+        const s1 = this.s1;
+        const s2 = this.s2;
+        
+        let r = -1;
+        
+        while (!s1.empty()) {
+            s2.push(s1.front());
+            s1.pop();
+        }
+        
+        if (!s2.empty()) {
+            r = s2.front();
+            s2.pop(); 
+        }
+        
+        while (!s2.empty()) {
+            s1.push(s2.front());
+            s2.pop();
+        }
+        
+        return r;
+    }
+}
+*/
+/*
+
+class DQueNode
+{
+    constructor()
+    {
+        this.value = 0;
+         this.next = null;
+        this.prev = null;
+    }
+}
+
+class deque
+{
+     // Constructor
+    constructor()
+    {
+        this.head = this.tail=null;
+    }
+     
+   
+    isEmpty()
+    {
+        if (this.head == null)
+            return true;
+              
+        return false;
+    }
+     
+    
+    size()
+    {
+        
+        if (!this.isEmpty())
+        {
+            let temp = this.head;
+            let len = 0;
+              
+            while (temp != null)
+            {
+                len++;
+                temp = temp.next;
+            }
+            return len;
+        }
+        return 0;
+    }
+     
+   
+    insert_first(element)
+    {
+     
+        let temp = new DQueNode();
+        temp.value = element;
+  
+      
+        if (this.head == null)
+        {
+            this.head = this.tail = temp;
+            temp.next = temp.prev = null;
+        }
+        else
+        {
+            this.head.prev = temp;
+            temp.next = this.head;
+            temp.prev = null;
+            this.head = temp;
+        }
+    }
+     
+    
+    insert_last(element)
+    {
+      
+        let temp = new DQueNode();
+        temp.value = element;
+  
+    
+        if (this.head == null)
+        {
+            this.head = this.tail = temp;
+            temp.next = temp.prev = null;
+        }
+        else
+        {
+            this.tail.next = temp;
+            temp.next = null;
+            temp.prev = this.tail;
+            this.tail = temp;
+        }
+    }
+     
+    
+    remove_first()
+    {
+     
+      
+        if (!this.isEmpty())
+        {
+            let temp = this.head;
+            this.head = this.head.next;
+            this.head.prev = null;
+  
+            return;
+        }
+        document.write("List is Empty");
+    }
+     
+ 
+    remove_last()
+    {
+        
+        if (!this.isEmpty())
+        {
+            let temp = this.tail;
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+  
+            return;
+        }
+        document.write("List is Empty");
+    }
+     
+    
+    display()
+    {
+        // If list is not empty
+        if (!this.isEmpty())
+        {
+            let temp = this.head;
+              
+            while (temp != null)
+            {
+                document.write(temp.value + " ");
+                temp = temp.next;
+            }
+  
+            return;
+        }
+        document.write("List is Empty");
+    }
+}
+ 
+
+class Stack
+{
+    constructor()
+    {
+        this.d= new deque();   
+    }
+     
+    push(element)
+    {
+        this.d.insert_last(element);
+    }
+     
+   
+    size()
+    {
+        return this.d.size();
+    }
+     
+    
+    pop()
+    {
+        this.d.remove_last();
+    }
+     
+
+    display()
+    {
+        this.d.display();
+    }
+}
+*/
+
+//Merge Without Extra Space
+/*
+let n = 4
+let  arr1= [1, 3 ,5 ,7] 
+let m = 5
+let arr2 = [0 ,2,6 ,8 ,9]
+let arr=[];
+for(let i=0;i<n;i++){
+    arr.push(arr1[i])
+}
+
+for(let i=0;i<m;i++){
+    arr.push(arr2[i])
+}
+
+
+
+arr.sort((a,b)=>{
+    return a-b;
+})
+
+console.log(arr)
+
+for(let i=0;i<n;i++){
+    arr1[i]=arr[i];
+}
+let count=0;
+for(let i=m-1;i<arr.length;i++){
+    arr2[count]= arr[i]
+    count++;
+}
+console.log(arr1)
+console.log(arr2)
+*/
+/*
+let n = 4
+let  arr1= [1, 3 ,5 ,7] 
+let m = 5
+let arr2 = [0 ,2,6 ,8 ,9]
+
+      arr1.push.apply(arr1,arr2);
+      arr1.sort((a,b)=>a-b);
+      let i,j=0;
+      for(i=n;i<n+m;i++){
+          arr2[j]=arr1[i];
+          j++;
+      }
+    */
+
+      
+      //{ Driver Code Starts
+//Initial Template for javascript
+
+console.log("mew")
+   
