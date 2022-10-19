@@ -54,7 +54,7 @@ try{
   const getData = await new Promise((resolve,reject)=>{
 
 
-axios.get('https://crudcrud.com/api/c69ddcc2f6a1463fbc38728680d51ccc/Appointment')
+axios.get('https://crudcrud.com/api/514e156224484b74b65cda2cda6be3a6/Appointment')
 .then((Response)=>{
   console.log(Response)
 
@@ -89,7 +89,7 @@ category: event.target.category.value
 
 let serilized_Obj = JSON.stringify(myobj);
 
-axios.post("https://crudcrud.com/api/c69ddcc2f6a1463fbc38728680d51ccc/Appointment",myobj)
+axios.post("https://crudcrud.com/api/514e156224484b74b65cda2cda6be3a6/Appointment",myobj)
 .then((Response)=>{
 console.log(Response)
 })
@@ -121,7 +121,7 @@ parentNode.innerHTML= parentNode.innerHTML+childHTML;
   async function deleteUser(userId){
 try{
     const deletingUser= await new Promise((resolve,reject)=>{
-      axios.delete(`https://crudcrud.com/api/c69ddcc2f6a1463fbc38728680d51ccc/Appointment/${userId}`)
+      axios.delete(`https://crudcrud.com/api/514e156224484b74b65cda2cda6be3a6/Appointment/${userId}`)
     .then(()=>{
         removeExpenseFromScreen(userId)
     })
