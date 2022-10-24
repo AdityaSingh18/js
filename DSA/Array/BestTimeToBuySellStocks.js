@@ -18,7 +18,7 @@ var maxProfit = function(prices) {
     return maxsum
     }
     */
-
+/*
     var maxProfit = function(prices) {
         min =prices[0]
         minindex= 0;
@@ -41,3 +41,21 @@ var maxProfit = function(prices) {
         let prices=
         [2,4,1]
         console.log(maxProfit(prices))
+        */
+
+        var maxProfit = function(prices) {
+            let min = Infinity;
+            let max = 0;
+            
+            for(let i of prices){
+                if(i < min ){
+                    min = i;
+                }else {
+                    let temp = i - min;
+                    if(temp > max){
+                        max = temp;
+                    }
+                }
+            }
+            return max;
+        };
