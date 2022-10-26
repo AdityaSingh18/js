@@ -1,0 +1,24 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon Export.js",
+    "start-server": "nodemon Export.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdityaSingh18/js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdityaSingh18/js/issues"
+  },
+  "homepage": "https://github.com/AdityaSingh18/js#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
