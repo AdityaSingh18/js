@@ -4,22 +4,22 @@ const fs = require('fs');
 const server = http.createServer((req, res) => {
   const url = req.url;
   const method = req.method;
- if(url === "/"){
-    fs.readFile("message.txt", {encoding: "utf-8"},(err,data)=>{
+  if (url === '/') {
+     fs.readFile("message.txt", { encoding: "utf-8" },(err,data)=>{
         if(err){
             console.log(err)
         }
 
-        console.log(`data from file`+data);
+        console.log(`data from file`+ data);
         res.write("<html>");
-        res.write("<head>title>Enter Message</title><head>");
-        res.write(`<body>${data}<>`)
+        res.write("<head>title>Enter Message</title></head>");
+        res.write(`<body>${data}</body>`);
         res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
         res.write("</html>")
         return res.end();
     })
- }
-  if (url === '/message' && method === 'POST') {
+  }
+  else if (url === '/message' && method === 'POST') {
     const body = [];
     req.on('data', (chunk) => {
       console.log(chunk);
@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       const parsedBody = Buffer.concat(body).toString();
       const message = parsedBody.split('=')[1];
-      fs.writeFileSync('message.txt', message);
+      fs.writeFile('message.txt', message);
     });
     res.statusCode = 302;
     res.setHeader('Location', '/');
@@ -42,4 +42,4 @@ const server = http.createServer((req, res) => {
   res.end();
 });
 
-server.listen(3000);
+server.listen(4000);
