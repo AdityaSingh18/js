@@ -16,7 +16,6 @@ app.post('/',(req,res,next)=>{
         <input type = "text" name="message" id ="message">
         <input type="hidden" name = "username" id="username">
         <button type="submit">Send</button></form>`)
-        console.log("in get username "+req.body.username)
 
     })
   
